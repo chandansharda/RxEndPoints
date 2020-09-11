@@ -17,20 +17,30 @@ class ApiBuilder: NSObject {
     private var runningSession: Observable<DataRequest>?
     private let disposable: DisposeBag = DisposeBag()
     
+    
     func cancelAllRequest(completion: @escaping () -> Void) {
         session.base.cancelAllRequests(completingOnQueue: .main) {
             completion()
         }
     }
     
-    func hitApi<T: ApiEndPoint>(withRequest req: T) -> Observable<T.Response> {
+    /**
+        Main method of making request
+     - can accept only ApiEndPoint type objects
+     - return bindable object 
+     */
+    
+    func makeRequest<T: ApiEndPoint>(withRequest req: T) -> Observable<T.Response> {
         
+        //making url from generic request
         guard let url = self.urlForEndpoint(req) else {
             return Observable.error(ApiErrors.urlNotCorrect)
         }
         
+        //making session of api request
         runningSession = session.request(req.method, url, parameters: req.parameters, headers: makeHeaders(req), interceptor: nil)
         
+        //returning observable object that can return result in success or error in faliure
         return Observable.create { [weak self] (observer)  in
             guard let self = self else {
                 return Disposables.create {
@@ -79,6 +89,9 @@ class ApiBuilder: NSObject {
         return URL(string: request.endPoint, relativeTo: request.baseUrl)
     }
     
+    /**
+        Function to make headers for url request
+     */
     private func makeHeaders<T: ApiEndPoint>(_ request: T) -> HTTPHeaders? {
         var head: [String:String] = [:]
         head = request.contentType.getDescription

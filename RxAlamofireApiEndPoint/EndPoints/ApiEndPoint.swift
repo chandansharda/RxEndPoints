@@ -36,11 +36,11 @@ extension ApiEndPoint {
     var baseUrl: URL? {
         switch developmentType {
         case .development:
-            return URL(string: "http://sha.staging.co.in:4003")
+            return URL(string: MainUrls.DEVELOPMENT_URL)
         case .live:
-            return URL(string: "http://sha.staging.co.in:4003")
+            return URL(string: MainUrls.STAGING_URL)
         case .production:
-            return URL(string: "http://sha.staging.co.in:4003")
+            return URL(string: MainUrls.PRODUCTION_URL)
         }
     }
     

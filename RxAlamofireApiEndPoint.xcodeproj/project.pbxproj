@@ -13,6 +13,7 @@
 		0409A47724FBA72900522627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0409A47524FBA72900522627 /* Main.storyboard */; };
 		0409A47924FBA72C00522627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0409A47824FBA72C00522627 /* Assets.xcassets */; };
 		0409A47C24FBA72C00522627 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0409A47A24FBA72C00522627 /* LaunchScreen.storyboard */; };
+		04304CB8250BCDC90046D47F /* ApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04304CB7250BCDC90046D47F /* ApiUrls.swift */; };
 		0484C09524FBA7D600D2A311 /* ApiBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484C09424FBA7D600D2A311 /* ApiBuilder.swift */; };
 		0484C09724FBA88B00D2A311 /* ApiEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484C09624FBA88B00D2A311 /* ApiEndPoint.swift */; };
 		0484C09924FBAF9900D2A311 /* ApiErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484C09824FBAF9900D2A311 /* ApiErrors.swift */; };
@@ -34,6 +35,7 @@
 		0409A47824FBA72C00522627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0409A47B24FBA72C00522627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0409A47D24FBA72C00522627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04304CB7250BCDC90046D47F /* ApiUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrls.swift; sourceTree = "<group>"; };
 		0484C09424FBA7D600D2A311 /* ApiBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiBuilder.swift; sourceTree = "<group>"; };
 		0484C09624FBA88B00D2A311 /* ApiEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndPoint.swift; sourceTree = "<group>"; };
 		0484C09824FBAF9900D2A311 /* ApiErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiErrors.swift; sourceTree = "<group>"; };
@@ -93,9 +95,18 @@
 			path = RxAlamofireApiEndPoint;
 			sourceTree = "<group>";
 		};
+		04304CB6250BCDB50046D47F /* Api Constants */ = {
+			isa = PBXGroup;
+			children = (
+				04304CB7250BCDC90046D47F /* ApiUrls.swift */,
+			);
+			path = "Api Constants";
+			sourceTree = "<group>";
+		};
 		0484C09324FBA7BD00D2A311 /* EndPoints */ = {
 			isa = PBXGroup;
 			children = (
+				04304CB6250BCDB50046D47F /* Api Constants */,
 				04AEE12524FCF9A5009106E4 /* Enums */,
 				04AEE12224FCF8AB009106E4 /* Logger */,
 				0484C09424FBA7D600D2A311 /* ApiBuilder.swift */,
@@ -293,6 +304,7 @@
 				0484C09F24FBC03C00D2A311 /* ViewModle.swift in Sources */,
 				04AEE12724FCF9B2009106E4 /* DevelopmentEnviorment.swift in Sources */,
 				0484C09D24FBBB6600D2A311 /* VEndPoint.swift in Sources */,
+				04304CB8250BCDC90046D47F /* ApiUrls.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

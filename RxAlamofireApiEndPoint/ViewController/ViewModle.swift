@@ -13,9 +13,9 @@ class ViewModle: ApiBuilder {
     
     func hitAndGetResponse(_ req: VEndPoint) {
         
-        let observer = super.hitApi(withRequest: req)
+        let observer = super.makeRequest(withRequest: req)
 
-        _ = observer.subscribe(onNext: { (userData) in
+        observer.subscribe(onNext: { (userData) in
             print(userData.token ?? "")
         }, onError: { (error) in
             print(error.localizedDescription)

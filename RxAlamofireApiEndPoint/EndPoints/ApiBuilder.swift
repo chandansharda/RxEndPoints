@@ -11,12 +11,16 @@ import RxSwift
 import RxAlamofire
 import Alamofire
 
+
 class ApiBuilder: NSObject {
     
     private let session: Reactive<Session> = AF.rx
     private var runningSession: Observable<DataRequest>?
     private let disposable: DisposeBag = DisposeBag()
     
+    deinit {
+        runningSession = nil
+    }
     
     func cancelAllRequest(completion: @escaping () -> Void) {
         session.base.cancelAllRequests(completingOnQueue: .main) {
@@ -24,12 +28,14 @@ class ApiBuilder: NSObject {
         }
     }
     
-    /**
-        Main method of making request
-     - can accept only ApiEndPoint type objects
-     - return bindable object 
-     */
+    /// Main Make Request Method.
+    ///
+    /// - Note: If T is of type ApiEndPoint then its accept
+    ///
+    ///
+    /// - Returns:              The Observable instance.
     
+    @discardableResult
     func makeRequest<T: ApiEndPoint>(withRequest req: T) -> Observable<T.Response> {
         
         //making url from generic request
@@ -40,7 +46,7 @@ class ApiBuilder: NSObject {
         //making session of api request
         runningSession = session.request(req.method, url, parameters: req.parameters, headers: makeHeaders(req), interceptor: nil)
         
-        //returning observable object that can return result in success or error in faliure
+        //returning observable object that can return result in success or error in failure
         return Observable.create { [weak self] (observer)  in
             guard let self = self else {
                 return Disposables.create {
@@ -65,6 +71,7 @@ class ApiBuilder: NSObject {
                                 
                             } catch {
                                 observer.onError(error)
+                                observer.onCompleted()
                             }
                         case .failure(let error):
                             observer.onError(error)
@@ -74,6 +81,7 @@ class ApiBuilder: NSObject {
                     
                 }, onError: { (error) in
                     observer.onError(error)
+                    observer.onCompleted()
                 })
                 .disposed(by: self.disposable)
             

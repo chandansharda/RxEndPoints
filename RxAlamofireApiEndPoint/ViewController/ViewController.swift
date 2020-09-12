@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         email = "hello@mail.com"
-        print(email)
         viewModle?.hitAndGetResponse(.login(["email": "lokesh@sha.com" , "password": "123456"]))
     }
 }

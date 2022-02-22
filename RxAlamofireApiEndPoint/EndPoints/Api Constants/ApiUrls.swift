@@ -10,7 +10,7 @@ import Foundation
 
 
 struct MainUrls {
-    static let PRODUCTION_URL: String = "http://sha.staging.co.in:4003"
-    static let STAGING_URL: String = "http://sha.staging.co.in:4003"
-    static let DEVELOPMENT_URL: String = "http://sha.staging.co.in:4003"
+    static let PRODUCTION_URL: String = "http://google.com"
+    static let STAGING_URL: String = "http://google.com"
+    static let DEVELOPMENT_URL: String = "http://google.com"
 }
